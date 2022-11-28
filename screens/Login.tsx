@@ -6,7 +6,7 @@ import * as Location from 'expo-location';
 const screenHeight = Dimensions.get('window').height+30;
 const screenWidth = Dimensions.get('window').width;
 
-export default function Login() {
+export default function Login(props) {
   const [email , setEmail] = useState('');
   const [pass,setPass] = useState('');
 
@@ -75,12 +75,16 @@ export default function Login() {
       </View>
       <TouchableOpacity 
         style={styles.loginBtn}
-        onPress={()=>{}}
+        onPress={()=>{
+          props.navigation.navigate('DrawerNavigator');
+        }}
       >
           <Text style={{...styles.loginText ,color : 'white'}}>Login</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={()=>{}}
+        onPress={()=>{
+          props.navigation.navigate('SignUp');
+        }}
       >
           <Text style={styles.loginText}>Signup</Text>
       </TouchableOpacity>

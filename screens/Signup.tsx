@@ -47,12 +47,17 @@ export default function Signup(props) {
       </View>
       <TouchableOpacity 
         style={styles.loginBtn}
-        onPress={()=>{console.log(name)}}
+        onPress={()=>{
+          props.navigation.navigate('DrawerNavigator');
+        }}
       >
           <Text style={{...styles.loginText ,color : 'white'}}>Signup</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={()=>{props.navigation.navigate('Register')}}
+        onPress={()=>{
+          props.navigation.navigate('Login')
+        }
+        }
       >
           <Text style={styles.loginText}>Login</Text>
       </TouchableOpacity>
