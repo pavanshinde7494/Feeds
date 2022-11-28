@@ -8,6 +8,9 @@ import WeatherScreen from "../screens/WeatherScreen";
 import DamScreen from "../screens/DamScreen";
 import SoilMoistureSreen from '../screens/SoilMoistureScreen';
 import TestScreen from '../screens/TestScreen';
+import Crop from '../screens/CropScreen';
+import Signup from "../screens/Signup";
+import Login from "../screens/Login";
 
 // Navigation Options
 
@@ -95,9 +98,47 @@ const DrawerNavigator = () => {
                 name="SoilMoisture"
                 component={SoilMoistureSreen}
             />
+            <Drawer.Screen
+                name="Crops"
+                component={Crop}
+            />
         </Drawer.Navigator>
     )
 }
 
+const Navigator = ()=>{
+    return(
+    <Stack.Navigator
+        screenOptions={{
+            headerShown : false,
+            headerStyle: {
+                backgroundColor: color.secondary,
+            },
+            headerTitleStyle: {
+                fontFamily: 'newrocker'
+            },
+            headerTintColor: 'white'
+        }}
+        initialRouteName='Login'
+    >
+        <Stack.Screen
+            name='Login'
+            component={Login}
+        />
+        <Stack.Screen
+            name='SignUp'
+            component={Signup}
+        />
+        
+        <Stack.Screen
+            name='DrawerNavigator'
+            component={DrawerNavigator}
+        />
+    </Stack.Navigator>
+    )
+}
 
-export default DrawerNavigator
+
+
+
+export default Navigator
