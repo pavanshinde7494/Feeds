@@ -6,28 +6,35 @@ import React, { useState } from 'react';
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Dropdown_soil from '../components/Dropdown';
 import ShowDetails from '../components/ShowDetails';
+import ShowDetailsSoilMoist from '../components/ShowDetailsSoilMoist';
 
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
 
 export default function SoilMoistureScreen() {
     //to show the details component
-    const [show, setShow] = useState(false);
+    const [tempshow, setTempShow] = useState(false);
+    const [moistshow, setMoistShow] = useState(false);
     //to set the details of showdetails component
     const [details, setDetails] = useState('')
+
+    const [moistdepth, setMoistdepth] = useState('')
+    const [tempdepth, setTempdepth] = useState('')
 
     //to handle select value of dropdown1
     const handelDropDown1 = (val) => {
         console.log(val)
+        setTempdepth(val)
         setDetails("drop1")
-        setShow(true)
+        setTempShow(true)
     }
 
     //to handle select value of dropdown2
     const handelDropDown2 = (val) => {
         console.log(val)
+        setMoistdepth(val)
         setDetails("drop2")
-        setShow(true)
+        setMoistShow(true)
     }
 
 
@@ -50,11 +57,16 @@ export default function SoilMoistureScreen() {
                         title="Soil Temperatue"
                         handleSelect={handelDropDown1}
                     />
+                    
+
+                    {setTempShow && <ShowDetails details={details} tempdepth={tempdepth}  />}
+
                     <Dropdown_soil
                         title="Soil Moisture"
                         handleSelect={handelDropDown2}
                     />
-                    {show && <ShowDetails data={details} />}
+                    {setMoistShow && <ShowDetailsSoilMoist data={details} moistdepth={moistdepth}/>}
+
             </ImageBackground>
         </View>
     )
